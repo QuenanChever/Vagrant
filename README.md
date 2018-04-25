@@ -1,3 +1,11 @@
+# Dependencies
+
+On top of installing vagrant, you probably will need to install the following packages as well:
+```bash
+$ sudo apt-get install nfs-common nfs-kernel-server
+```
+
+
 # Description
 This configuration includes following software:
 
