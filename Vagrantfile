@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         sylius_config.vm.provider "virtualbox" do |v|
             v.gui = false
-            v.memory = 1024
+            v.memory = 2048
             v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
         end
 
