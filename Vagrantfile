@@ -8,6 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         sylius_config.vm.box = "debian/jessie64"
         sylius_config.vm.box_url = "https://app.vagrantup.com/debian/boxes/jessie64"
         sylius_config.ssh.forward_agent = true
+        sylius_config.ssh.insert_key = false
 
         sylius_config.vm.provider "virtualbox" do |v|
             v.gui = false

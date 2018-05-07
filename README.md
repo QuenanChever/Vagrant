@@ -1,11 +1,3 @@
-# Dependencies
-
-On top of installing vagrant, you probably will need to install the following packages as well:
-```bash
-$ sudo apt-get install nfs-common nfs-kernel-server
-```
-
-
 # Description
 This configuration includes following software:
 
@@ -22,22 +14,22 @@ This configuration includes following software:
 
 First you need to download this repository
 ```bash
-$ git clone git@github.com:Sylius/Vagrant.git vagrant
+$ git clone git@github.com:QuenanChever/Vagrant.git shop-tv
 ```
 
 And build Vagrant:
 ```bash
-$ cd vagrant
+$ cd shop-tv
 $ vagrant up
 ```
 
 While waiting for Vagrant to start up, you should add an entry into /etc/hosts file on the host machine.
 
 ```
-10.0.0.200      sylius.test
+10.0.0.200      shop-tv.dev
 ```
 
-From now you should be able to access your Sylius project at [http://sylius.test/app_dev.php](http://sylius.test/app_dev.php).
+From now you should be able to access your Sylius project at [http://shop-tv.dev/app_dev.php](http://shop-tv.dev/app_dev.php).
 
 Your newly created project is available under `sylius` folder.
 
@@ -48,6 +40,16 @@ $ vagrant ssh -c 'cd /var/www/sylius && ./node_modules/.bin/gulp'
 ```
 
 # Troubleshooting
+
+### Vagrant setup
+
+* First, make sure that Virtualbox is installed. VT-X must be enabled in your BIOS/UEFI
+* Install Vagrant (tested with versions 1.9.4 and 2.0.2)
+* You'll need to enable NTS. For Ubuntu:
+```bash
+$ sudo apt-get install nfs-common nfs-kernel-server
+```
+* Lastly, make sure that the host machine has access to repo [https://github.com/devl-hop/shop-technique-voile](https://github.com/devl-hop/shop-technique-voile) from SSH.
 
 ### Beware
 
@@ -65,34 +67,4 @@ To view the apache logs, run the following commands (inside Vagrant):
 ```bash
 $ tail -f /var/log/apache2/sylius_error.log
 $ tail -f /var/log/apache2/sylius_access.log
-```
-
-# Configure vagrant to contribute on Sylius Core
-
-### Use sylius for contribution
-
-Edit "Vagrantfile" and replace this following line:
-
-```bash
-sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create.sh" 
-```
-
-By this one:
- 
- ```bash
-sylius_config.vm.provision :shell, privileged: false, path: "shell_provisioner/sylius/create_for_contribution.sh"
-```
-
-### Clone your own sylius repository
-
-```bash
-git clone https://github.com/{user}/Sylius sites/sylius
-```
-
-replace `{user}` with your github account user name
-
-## Build Vagrant:
-
-```bash
-$ vagrant up
 ```
