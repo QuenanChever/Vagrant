@@ -11,4 +11,4 @@ yarn run gulp
 
 # TV setup
 php bin/console tv:install:setup
-php bin/console sylius:theme:assets:install
+php bin/console sylius:theme:assets:install --symlink
