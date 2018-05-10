@@ -51,7 +51,14 @@ $ sudo apt-get install nfs-common nfs-kernel-server
 ```
 * Lastly, make sure that the host machine has access to repo [https://github.com/devl-hop/shop-technique-voile](https://github.com/devl-hop/shop-technique-voile) from SSH.
 
-### Beware
+### Temporary files
+
+It may happen that the /dev/shm gets saturated, in which case you need to remove the following directory:
+```bash
+$ rm -rf /dev/shm/sylius/
+```
+
+### Logs
 
 Using Symfony2 inside Vagrant can be slow due to synchronisation delay incurred by NFS. To avoid this, both locations have been moved to a shared memory segment under ``/dev/shm/sylius``.
 
