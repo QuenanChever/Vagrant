@@ -12,9 +12,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
         sylius_config.vm.provider "virtualbox" do |v|
             v.gui = false
-            v.memory = 2048
+            v.memory = 4096
             v.customize ["setextradata", :id, "VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
-            v.customize ["modifyvm", :id, "--cpus", 2]
+            v.customize ["modifyvm", :id, "--cpus", 4]
         end
 
         sylius_config.vm.synced_folder "sites/", "/var/www/sites", type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc', 'nolock', 'actimeo=2']
